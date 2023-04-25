@@ -11,7 +11,7 @@ const getCooks = async () => {
 
 const getWaiters = async () => {
     const db = await database.connect();
-    const waitersResult = await  db.collection("waiters").findOne();
+    const waitersResult = await db.collection("waiters").findOne();
     delete waitersResult._id;
     return waitersResult;
 }

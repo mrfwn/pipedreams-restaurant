@@ -1,9 +1,10 @@
 const fastify = require('fastify');
 const errorHandler = require('../error/errorHandler');
+let app = null;
 
 const start = async (api, repository) => {
    
-    const app = fastify();
+    app = fastify();
     
     app.register((instance, _, next) => {
         api(instance, repository);
@@ -12,13 +13,11 @@ const start = async (api, repository) => {
 
     app.setErrorHandler(errorHandler);
     
-    app.listen({ port: process.env.PORT }).then(() => {
-        console.log(`Server Running: Port-${process.env.PORT}`);
-    });
+    return app.listen({ port: process.env.PORT });
 }
 
 const stop = async () => {
-    if (server) await server.close();
+    if (app) await app.close();
     return true;
 }
 

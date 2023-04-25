@@ -1,8 +1,10 @@
+const fastify = require('fastify');
+
 module.exports = (error, _, reply) => {
     if (error instanceof fastify.errorCodes.FST_ERR_BAD_STATUS_CODE) {
       console.error(error);
-      reply.status(500).send({ ok: false });
+      return reply.status(500).send({ message: 'Internal server error' });
     } else {
-      reply.send(error);
+      return reply.send(error);
     }
 }
