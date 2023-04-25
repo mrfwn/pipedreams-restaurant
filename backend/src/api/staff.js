@@ -1,9 +1,4 @@
-module.exports = async (app) => {
-    app.get('/GetCooks', async (req, res) => {
-        return { ok:true };
-    });
-
-    app.get('/GetWaiters', async (req, res) => {
-        return { ok: true };
-    });
+module.exports = async (app, repository) => {
+    app.get('/GetCooks', async () => repository.getCooks());
+    app.get('/GetWaiters', async () => repository.getWaiters());
 };
