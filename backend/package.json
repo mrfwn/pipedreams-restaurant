@@ -6,12 +6,13 @@
   "scripts": {
     "start": "nodemon",
     "test": "jest --verbose --forceExit",
-    "test-coverage": "jest --verbose --forceExit --coverage"
+    "test-coverage": "jest --verbose --coverage --forceExit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^8.2.1",
     "dotenv": "^16.0.3",
     "fastify": "^4.15.0",
     "mongodb": "^5.3.0"

@@ -10,12 +10,12 @@ describe("#Database Unit Test", () => {
         expect(connection).toBeTruthy();
     });
     
-    test('Database Disconnection', async () => {
+    test('Database Disconnection without Client', async () => {
         const isDisconnected = await database.disconnect();
         expect(isDisconnected).toBeTruthy();
     });
 
-    test('Database Disconnection 2', async () => {
+    test('Database Disconnection with Client', async () => {
         await database.connect();
         const isDisconnected = await database.disconnect();
         expect(isDisconnected).toBeTruthy();

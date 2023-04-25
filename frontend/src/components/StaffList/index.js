@@ -1,9 +1,10 @@
 import { List } from './styles';
 
-export const StaffList = () => {
+export const StaffList = ({list}) => {
+    
     return(
         <List>
-            {['mario', 'debora'].map((staff, index) => (
+            {(list || []).map((staff, index) => (
             <li key={String(index)}><span>{staff}</span></li>
           ))}
         </List>

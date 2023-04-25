@@ -1,10 +1,16 @@
 const fastify = require('fastify');
+const cors = require("@fastify/cors");
 const errorHandler = require('../error/errorHandler');
 let app = null;
 
 const start = async (api, repository) => {
    
     app = fastify();
+
+    app.register(cors, {
+        origin: "*",
+        methods: ["GET"]
+      });
     
     app.register((instance, _, next) => {
         api(instance, repository);
