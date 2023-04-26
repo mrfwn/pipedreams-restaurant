@@ -30,6 +30,8 @@
    - Unit and Integration tests were implemented for the entire backend with 100% coverage.
   
    - For execution use command `npm run test` or command `npm run test-coverage` to show coverage
+   
+   - Note: When running the tests, it will be necessary to have the database, because it also contains integration tests
 
   ![Screen Shot 2023-04-26 at 2 12 01 AM](https://user-images.githubusercontent.com/13460706/234485125-bb91fd88-fd21-4a9b-85b7-7097e51b7911.png)
 
