@@ -1,7 +1,9 @@
 const database = require("../config/database");
-const cooksJsonFile = require("../config/cooks.json");
-const waitersJsonFile = require("../config/waiters.json");
 
+/**
+ * 
+ * @returns an @Object containing the days of the week as a key and an @Array with the names of the cooks
+ */
 const getCooks = async () => {
     const db = await database.connect();
     const cooksResult = await db.collection("cooks").findOne();
@@ -9,6 +11,10 @@ const getCooks = async () => {
     return cooksResult;
 }
 
+/**
+ * 
+ * @returns an @Object containing the days of the week as a key and an @Array with the names of the waiters
+ */
 const getWaiters = async () => {
     const db = await database.connect();
     const waitersResult = await db.collection("waiters").findOne();
@@ -16,12 +22,6 @@ const getWaiters = async () => {
     return waitersResult;
 }
 
-const loadBaseSchema = async () => {
-    const db = await database.connect();
-    await db.collection("cooks").insertOne(cooksJsonFile);
-    await db.collection("waiters").insertOne(waitersJsonFile);
-}
-
 const disconnect = async () => database.disconnect();
 
-module.exports = { getCooks, getWaiters, loadBaseSchema, disconnect };
+module.exports = { getCooks, getWaiters, disconnect };

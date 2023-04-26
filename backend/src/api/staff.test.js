@@ -1,16 +1,14 @@
 require('dotenv/config');
 const supertest = require('supertest');
-const staff = require('./staff');
 const server = require("../server/server");
-const repository = require("../repository/repository");
-const cooksJsonFile = require("../config/cooks.json");
-const waitersJsonFile = require("../config/waiters.json");
+const cooksJsonFile = require("../seed/cooks.json");
+const waitersJsonFile = require("../seed/waiters.json");
 
 describe("#Staff Integration Test", () => {
     let app = null;
 
     beforeAll(async () => {
-        app = await server.start(staff, repository);
+        app = await server.start();
     });
 
     afterAll(async () => {

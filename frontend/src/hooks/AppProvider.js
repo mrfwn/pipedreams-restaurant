@@ -16,6 +16,10 @@ const DEFAULT_WEEKDAY = {
     isPrevLimit: true
 }
 
+/**
+ * checks valid day rules and returns an object with valid conditions
+ * @returns @Object
+ */
 const getCurrentValidWeekday = () => {
     const currentWeekDay = new Date().getDay();
     if(currentWeekDay < WEEKDAYS_LIMIT.Monday || currentWeekDay > WEEKDAYS_LIMIT.Friday){
@@ -25,6 +29,11 @@ const getCurrentValidWeekday = () => {
     return getWeekday(currentWeekDay);
 };
 
+/**
+ * 
+ * @param {*} indexWeekday @Number
+ * @returns @Object
+ */
 const getWeekday = (indexWeekday) => {
     return { 
         indexWeekDay: indexWeekday, 
@@ -34,6 +43,12 @@ const getWeekday = (indexWeekday) => {
     }
 }
 
+/**
+ * Weekday Provider is a high order component where we create a context to control 
+ * the unique state of the selected day
+ * @param {*} children  Component
+ * @returns A component containing attributes global to the context
+ */
 const WeekdayProvider = ({ children }) => {
     const [weekday, setWeekday] = useState(() => {
       let weekday = JSON.parse(localStorage.getItem('@PipeRest:weekday'));
@@ -66,7 +81,10 @@ const WeekdayProvider = ({ children }) => {
       </WeekdayContext.Provider>
     );
   };
-  
+  /**
+   * 
+   * @returns returns the attributes of the created context
+   */
   const useWeekday = () => {
     const context = useContext(WeekdayContext);
   

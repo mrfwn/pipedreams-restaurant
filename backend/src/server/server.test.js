@@ -1,8 +1,7 @@
-require('dotenv/config');
 const server = require('./server');
 
 describe("#Server Unit Test", () => {
-    const apiMock = (app, repo) =>  "do nothing";
+    const apiMock = () =>  "do nothing";
     afterAll(async () => {
         await server.stop();
     });

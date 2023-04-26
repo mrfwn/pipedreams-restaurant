@@ -21,9 +21,7 @@ export const Cooks = () => {
         }
     }
 
-    useEffect(() => {
-        fetchCooksSchedule();
-    }, []);
+    useEffect(() => {fetchCooksSchedule()}, []);
 
     return (
         <Container>

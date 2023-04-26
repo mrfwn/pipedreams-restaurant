@@ -1,13 +1,11 @@
 (async () => {
     require('dotenv/config');
-    const staff = require('./api/staff');
     const server = require("./server/server");
-    const repository = require("./repository/repository");
-
+    const seed = require("./seed/seed");
     try {
-        await repository.loadBaseSchema();
-        await server.start(staff, repository);
-        console.log(`Server is up and running at ${process.env.PORT}`);
+        await seed.loadSeed();
+        await server.start();
+        console.log(`Server is up and running at ${process.env.PORT || 8080}`);
     } catch (error) {
         console.error(error);
     }

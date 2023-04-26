@@ -11,20 +11,18 @@ export const Waiters = () => {
     const { weekday } = useWeekday();
     const [waitersSchedule, setWaitersSchedule] = useState({});
 
-    
-    useEffect(() => {
-        async function fetchData() {
-            try{
-                const newWorkSchedule = await api.get('/GetWaiters');
-                setWaitersSchedule(newWorkSchedule.data);
-            }catch(e){
-                console.log(e)
-                throw new Error("Error when trying to capture work schedule information")
-            }
-            
+    const fetchWaitersSchedule = async () => {
+        try{
+            const { data } = await api.get('/GetWaiters');
+            setWaitersSchedule(data);
+        }catch(e){
+            console.log(e);
+            throw new Error("Error when trying to capture waiters schedule information");
         }
-        fetchData()
-    }, []);
+    }
+
+    useEffect(() => {fetchWaitersSchedule()}, []);
+    
     return (
         <Container>
             <HeadContainer>
