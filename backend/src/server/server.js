@@ -19,7 +19,7 @@ const start = async () => {
 
     app.setErrorHandler(errorHandler);
     
-    return app.listen({ port: process.env.PORT || 8080 });
+    return app.listen( process.env.PORT || 8080 , '0.0.0.0');
 }
 
 const stop = async () => {

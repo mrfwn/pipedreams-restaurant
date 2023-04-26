@@ -1,0 +1,27 @@
+services:
+    frontend:
+        build: ./frontend
+        ports:
+          - "3000:3000"
+        stdin_open: true
+        environment:
+          REACT_APP_API_URL: "http://localhost:8080"
+    backend:
+        build: ./backend
+        ports:
+            - "8080:8080"
+        networks:
+            - db-net
+        environment:
+            MONGO_CONNECTION: "mongodb://db:27017/staff"
+            PORT: 8080
+            DATABASE_NAME: "staff"
+    db:
+        image: mongo
+        networks:
+            - db-net
+        ports:
+            - "27017:27017"
+
+networks:
+    db-net: {}
